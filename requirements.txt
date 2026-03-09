@@ -3,3 +3,12 @@ djangorestframework==3.16.1
 psycopg2-binary==2.9.11
 pillow==12.1.1
 requests==2.32.5
+
+# OCR dependencies
+easyocr
+PyMuPDF
+python-docx
+
+# Vision dependencies
+ultralytics
+opencv-python

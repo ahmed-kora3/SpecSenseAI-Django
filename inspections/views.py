@@ -31,28 +31,30 @@ class CableInspectionUploadView(APIView):
 
         image_file = request.FILES['image']
 
-        # Validate file extension
         allowed_types = ['image/jpeg', 'image/png', 'image/jpg']
         if image_file.content_type not in allowed_types:
             return Response({'error': 'Invalid file type. Only JPG and PNG allowed.'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Create DB record first
         inspection = CableInspection.objects.create(image=image_file)
 
         start_time = time.time()
         try:
             # ------------------------------------------------
-            # TODO (عضو 4): استدعاء الـ AI Engine هنا
+            # TODO (TASK-09): ربط الـ Vision AI Engine هنا
             # from core.vision_engine import analyze_cable_image
             # result_img, data = analyze_cable_image(inspection.image.path)
+            # inspection.status = data.get('status', 'ERROR')
+            # inspection.diameter_mm = data.get('diameter_mm')
+            # inspection.defect_detected = data.get('defect_detected', False)
+            # inspection.confidence_score = data.get('confidence_score')
+            # inspection.raw_data = data.get('raw_data', {})
+            # if result_img:
+            #     inspection.result_image = result_img
             # ------------------------------------------------
 
-            # Placeholder response until AI is connected
+            # Placeholder until Vision AI is connected (TASK-09)
             inspection.status = 'PASS'
-            inspection.diameter_mm = None
-            inspection.defect_detected = False
-            inspection.confidence_score = None
-            inspection.raw_data = {'note': 'AI engine not connected yet'}
+            inspection.raw_data = {'note': 'Vision AI not connected yet'}
 
         except Exception as e:
             inspection.status = 'ERROR'

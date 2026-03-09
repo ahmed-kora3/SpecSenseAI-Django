@@ -50,17 +50,21 @@ class DocumentAnalysisUploadView(APIView):
         start_time = time.time()
         try:
             # ------------------------------------------------
-            # TODO (عضو 5): استدعاء الـ OCR Engine هنا
+            # TODO (TASK-07): ربط الـ OCR Engine هنا
             # from core.ocr_engine import extract_and_validate
             # specs, report = extract_and_validate(doc.document.path)
             # doc.status = report.get('status', 'ERROR')
             # doc.cable_category = specs.get('cable_category', '')
-            # ...etc
+            # doc.voltage_rating = specs.get('voltage', '')
+            # doc.current_rating = specs.get('current_rating', '')
+            # doc.material = specs.get('cable_type', '')
+            # doc.top_terms = specs.get('top_terms', [])
+            # doc.extracted_specs = specs
+            # doc.validation_errors = report.get('errors', [])
             # ------------------------------------------------
 
-            # Placeholder until OCR is connected
+            # Placeholder until OCR is connected (TASK-07)
             doc.status = 'UNVERIFIABLE'
-            doc.raw_data_note = 'OCR engine not connected yet'
 
         except Exception as e:
             doc.status = 'ERROR'
