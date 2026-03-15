@@ -1,4 +1,5 @@
 from django.db import models
+from core.models import CableStandard
 
 
 class CableInspection(models.Model):
@@ -10,6 +11,7 @@ class CableInspection(models.Model):
         ('ERROR', 'Error'),
     ]
 
+    cable = models.ForeignKey(CableStandard, on_delete=models.CASCADE, related_name="inspections")
     image = models.ImageField(upload_to='inspections/images/')
     result_image = models.ImageField(upload_to='inspections/results/', null=True, blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)

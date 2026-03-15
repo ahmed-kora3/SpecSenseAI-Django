@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class DocumentAnalysis(models.Model):
@@ -11,6 +12,7 @@ class DocumentAnalysis(models.Model):
         ('ERROR', 'Processing Error'),
     ]
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="document_analyses")
     document = models.FileField(upload_to='documents/uploads/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     original_filename = models.CharField(max_length=255, blank=True)
