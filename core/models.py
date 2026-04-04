@@ -14,7 +14,7 @@ class CableStandard(models.Model):
 
 # 2️ Vision Results linked to CableStandard
 class CableInspection(models.Model):
-    cable = models.ForeignKey(CableStandard, on_delete=models.CASCADE, related_name="inspections")
+    cable = models.ForeignKey(CableStandard, on_delete=models.CASCADE, related_name="core_cable_inspections")
     result_image = models.ImageField(upload_to="inspection_images/")
     defect_detected = models.BooleanField(default=False)
     inspected_at = models.DateTimeField(auto_now_add=True)
@@ -24,7 +24,7 @@ class CableInspection(models.Model):
 
 # 3️ OCR Records linked to Users
 class DocumentAnalysis(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="documents")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="core_document_analyses", null=True, blank=True)
     document_file = models.FileField(upload_to="documents/")
     ocr_text = models.TextField()
     analyzed_at = models.DateTimeField(auto_now_add=True)

@@ -11,7 +11,7 @@ class CableInspection(models.Model):
         ('ERROR', 'Error'),
     ]
 
-    cable = models.ForeignKey(CableStandard, on_delete=models.CASCADE, related_name="inspections")
+    cable = models.ForeignKey(CableStandard, on_delete=models.CASCADE, related_name="inspections_cable_inspections")
     image = models.ImageField(upload_to='inspections/images/')
     result_image = models.ImageField(upload_to='inspections/results/', null=True, blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)

@@ -12,7 +12,7 @@ class DocumentAnalysis(models.Model):
         ('ERROR', 'Processing Error'),
     ]
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="document_analyses")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="documents_document_analyses", null=True, blank=True)
     document = models.FileField(upload_to='documents/uploads/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     original_filename = models.CharField(max_length=255, blank=True)
